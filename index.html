@@ -262,7 +262,6 @@ textarea.form-input{resize:vertical;min-height:80px;}
   </div>
   <div class="sb-sec">
     <div class="sb-lbl">Sistem</div>
-    <button class="nav" onclick="goPage('panduan',this)"><span class="nav-ic">📖</span>Panduan Penggunaan</button>
     <button class="nav" onclick="exportCSV()"><span class="nav-ic">📥</span>Export CSV</button>
   </div>
   <div class="sb-bot">
@@ -445,73 +444,7 @@ textarea.form-input{resize:vertical;min-height:80px;}
     </div>
   </div>
 
-  <!-- ======= PAGE: PANDUAN ======= -->
-  <div class="page" id="page-panduan">
-    <div class="sec-hdr">
-      <div><div class="sec-ttl">Panduan Penggunaan</div><div class="sec-sub">Cara setup dan menggunakan sistem absensi BSC</div></div>
-    </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-      <!-- Cara Pakai -->
-      <div class="card card-p">
-        <div class="card-hdr"><div><div class="card-title">🚀 Cara Menggunakan Web Ini</div><div class="card-sub">Langkah-langkah penggunaan harian</div></div></div>
-        <div class="step-list">
-          <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Upload/Daftarkan Anggota</h4><p>Buka halaman <strong>Data Anggota</strong> → klik <strong>Upload CSV</strong> untuk import massal, atau <strong>Tambah Anggota</strong> untuk input manual. Setiap anggota perlu nama, RFID ID, jabatan, dan divisi.</p></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Buat Kegiatan</h4><p>Buka halaman <strong>Kegiatan</strong> → klik <strong>Tambah Kegiatan</strong>. Isi nama kegiatan, tanggal, dan batas waktu (untuk deteksi terlambat). Setiap rapat, seminar, atau event punya absensi terpisah.</p></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Pilih Kegiatan Aktif</h4><p>Di halaman <strong>Absensi RFID</strong>, pilih kegiatan yang sedang berlangsung dari dropdown di bagian atas.</p></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Scan / Input RFID</h4><p>Ketik atau scan RFID ID anggota (format: <code>BSC-001</code>) lalu tekan Enter atau klik Scan. Konfirmasi muncul otomatis.</p></div></div>
-          <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Monitor & Export</h4><p>Pantau statistik real-time. Export ke CSV untuk laporan ke Ketua/Pembina. KPI dihitung otomatis dari data absensi kegiatan.</p></div></div>
-        </div>
-      </div>
-
-      <!-- Deploy Guide -->
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div class="card card-p">
-          <div class="card-hdr"><div><div class="card-title">🌐 Cara Deploy — Gratis</div><div class="card-sub">Biar bisa diakses semua pengurus</div></div></div>
-          <div class="step-list">
-            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>GitHub Pages (Paling Mudah)</h4><p>Buat akun <code>github.com</code> → buat repository baru → upload file <code>bsc-absensi.html</code> → rename jadi <code>index.html</code> → masuk Settings → Pages → deploy. URL: <code>namakamu.github.io/bsc</code></p></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Netlify Drop (Tercepat)</h4><p>Buka <code>netlify.com/drop</code> → drag & drop file HTML → langsung online dalam 30 detik. Dapat URL seperti <code>bsc-absensi.netlify.app</code></p></div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Google Drive (Internal)</h4><p>Upload ke Google Drive → klik kanan → Share → Anyone with link → buka di browser. Bisa diakses via link tanpa deploy.</p></div></div>
-          </div>
-        </div>
-
-        <div class="card card-p">
-          <div class="card-hdr"><div><div class="card-title">📡 Integrasi RFID Reader Fisik</div><div class="card-sub">Hubungkan ke hardware reader</div></div></div>
-          <div class="step-list">
-            <div class="step"><div class="step-num">1</div><div class="step-content"><h4>USB RFID Reader (Plug & Play)</h4><p>Sebagian besar USB RFID reader bekerja sebagai keyboard emulator. Cukup colok ke laptop, klik field input di web, tempel kartu → ID otomatis terketik dan langsung scan.</p></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Pastikan Auto-Enter</h4><p>Reader yang baik mengirim karakter Enter setelah ID. Kalau tidak, aktifkan setting di reader atau klik tombol Scan manual.</p></div></div>
-          </div>
-          <div style="margin-top:10px;">
-            <div style="font-size:10px;color:var(--mu);margin-bottom:8px;">RFID Reader yang Direkomendasikan:</div>
-            <span class="tech-badge"><strong>RFID USB 125KHz</strong> ~Rp 50rb</span>
-            <span class="tech-badge"><strong>ACR122U NFC</strong> ~Rp 300rb</span>
-            <span class="tech-badge"><strong>RDM6300</strong> Arduino ~Rp 30rb</span>
-          </div>
-        </div>
-
-        <div class="card card-p">
-          <div class="card-hdr"><div><div class="card-title">💾 Tentang Data</div></div></div>
-          <p style="font-size:11px;color:var(--mu);line-height:1.7;">Data tersimpan di <strong style="color:var(--wh)">localStorage</strong> browser (permanen di perangkat itu). Selama tidak clear browsing data atau ganti browser, data aman. Untuk backup, gunakan <strong style="color:var(--wh)">Export CSV</strong> secara rutin. Kalau ingin data tersinkron antar perangkat, hubungi Zikri untuk upgrade ke versi dengan database.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Format CSV -->
-    <div class="card card-p">
-      <div class="card-hdr"><div><div class="card-title">📋 Format Upload CSV Anggota</div><div class="card-sub">Format yang harus diikuti saat upload data anggota</div></div>
-      <button class="btn btn-ghost btn-sm" onclick="downloadTemplate()">⬇ Download Template</button></div>
-      <div style="background:var(--dk2);border-radius:8px;padding:14px;overflow-x:auto;">
-        <code style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--o);white-space:pre;">nama,rfid_id,jabatan,divisi
-Muhamad Zikri,BSC-001,Ketua Umum,Pengurus
-Wakil Ketua,BSC-002,Wakil Ketua,Pengurus
-Budi Santoso,BSC-007,Kepala Divisi,PI
-Sari Dewi,BSC-008,Staff,PI
-Ahmad Fauzi,BSC-011,Kepala Divisi,Relasi</code>
-      </div>
-      <p style="font-size:10px;color:var(--mu);margin-top:10px;">Kolom wajib: <code style="font-family:'JetBrains Mono',monospace;background:var(--dk2);padding:1px 5px;border-radius:3px;color:var(--o);">nama, rfid_id, jabatan, divisi</code> — Nilai divisi: Pengurus / PI / Relasi / Kominfo</p>
-    </div>
-  </div>
-</div><!-- end page panduan -->
 
 </div><!-- end main -->
 
@@ -706,7 +639,7 @@ function goPage(id, btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   if(btn){ document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active')); btn.classList.add('active'); }
-  const titles = {absensi:'Absensi RFID',kegiatan:'Manajemen Kegiatan',anggota:'Data Anggota',kpi:'KPI Anggota',panduan:'Panduan Penggunaan'};
+  const titles = {absensi:'Absensi RFID',kegiatan:'Manajemen Kegiatan',anggota:'Data Anggota',kpi:'KPI Anggota'};
   document.getElementById('page-title').textContent = titles[id]||'';
   if(id==='absensi'){ refreshEventSel(); renderTable(); }
   if(id==='anggota'){ renderMemberTable(); }
